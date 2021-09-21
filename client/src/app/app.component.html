@@ -1,16 +1,26 @@
-<h1>{{title}} </h1>
+<app-nav></app-nav>>
 
 
-<table class="bg-danger" style=" display: flex; flex-direction: column; align-items: center;">
-  <tr>
-    <th>id</th>
-    <th>name</th>
-  </tr>
-  <tr *ngFor="let user of users">
-    <td>{{user.id}}</td>
-    <td>{{user.userName}}</td>
+<div class="container" style="margin-top: 100px;">
+  <app-home></app-home>
+</div>
 
 
-  </tr>
 
-</table>
+<!-- <div class="container p-5">
+  <table class=" m-5 table table-striped">
+    <tr>
+      <th>id</th>
+      <th>name</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.userName}}</td>
+
+
+    </tr>
+
+  </table>
+
+
+</div> -->
