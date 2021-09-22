@@ -42,7 +42,8 @@
                 </div> -->
 
                 <div class="dropdown" dropdown *ngIf=" currentUser$ | async">
-                    <a class="dropdown-toggle text-light" dropdownToggle>Welcome User</a>
+                    <a class="dropdown-toggle text-light" dropdownToggle style="cursor: pointer;">Welcome
+                        {{model.username}}</a>
                     <ul *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="basic-link">
                         <li><a class="dropdown-item">Edit Profile</a></li>
                         <li>
