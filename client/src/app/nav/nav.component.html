@@ -84,15 +84,19 @@
                         <a class="nav-link " routerLink='/messages' routerLinkActive='active'>Messages</a>
                     </li>
                 </ng-container>
+
+                <li class="nav-item">
+                    <a class="nav-link " routerLink='/errors' routerLinkActive='active'>Errors</a>
+                </li>
             </ul>
         </div>
         <!--Profile Menu -->
 
-        <div class="dropdown end-50 " dropdown *ngIf=" (currentUser$ | async) as user ">
+        <div class="dropdown  position-absolute  end-0 p-5" dropdown *ngIf=" (currentUser$ | async) as user ">
             <a class="dropdown-toggle text-dark" dropdownToggle style="cursor: pointer; text-decoration:none;">
                 Hello - <span class=" ">{{user.username | titlecase}}</span></a>
 
-            <ul *dropdownMenu class="dropdown-menu " role="menu" aria-labelledby="basic-link">
+            <ul *dropdownMenu class="dropdown-menu   " role="menu" aria-labelledby="basic-link">
                 <li><a class="dropdown-item">Edit Profile</a></li>
                 <li>
                     <div class="div dropdown-divider"></div>

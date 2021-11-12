@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './_modules/shared.module';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 
 
 
@@ -26,6 +27,7 @@ import { SharedModule } from './_modules/shared.module';
     HomeComponent,
     RegisterComponent,
     MessagesComponent,
+    TestErrorsComponent,
 
   ],
   imports: [
