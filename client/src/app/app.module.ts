@@ -1,6 +1,12 @@
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { MemberCardComponent } from './members/member-card/member-card.component';
+import { ListsComponent } from './lists/lists.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import{HttpClientModule}from '@angular/common/http'
+import{HttpClientModule, HTTP_INTERCEPTORS}from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from "@angular/common";
@@ -20,6 +26,7 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,19 +35,27 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
     RegisterComponent,
     MessagesComponent,
     TestErrorsComponent,
+    MemberListComponent,
+    MemberDetailComponent ,
+    ListsComponent ,
+    TestErrorsComponent ,
+    MemberCardComponent ,
+
 
   ],
   imports: [
     BrowserModule,
     CommonModule ,
-    AppRoutingModule, 
+    AppRoutingModule,
     HttpClientModule ,
     FormsModule,
     NgbModule ,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule ,
+
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS , useClass: ErrorInterceptor , multi: true  } ,
+    {provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor , multi: true  } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,9 +20,6 @@ export class HomeComponent implements OnInit {
   }
 
 
- 
-
-
 cencelRegisterMode(event : boolean){
   this.registerMode = event;
 }

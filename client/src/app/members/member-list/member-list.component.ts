@@ -1,4 +1,7 @@
+import { Member } from './../../_modal/member';
+import { MembersService } from './../../_services/members.service';
 import { Component, OnInit } from '@angular/core';
+import { HttpEvent } from '@angular/common/http';
 
 @Component({
   selector: 'app-member-list',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberListComponent implements OnInit {
 
-  constructor() { }
+
+  members: any;
+
+  constructor(private memberService : MembersService  ) {
+
+  }
 
   ngOnInit() {
+
+    this.loadMembers();
+  }
+
+
+  loadMembers(){
+    this.memberService.getMembers().subscribe(members => {
+      this.members = members;
+    })
   }
 
 }
