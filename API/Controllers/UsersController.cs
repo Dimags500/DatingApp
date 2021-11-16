@@ -1,4 +1,5 @@
 ﻿using API.Data;
+using API.DTOs;
 using API.Entities;
 using API.interfases;
 using AutoMapper;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -49,13 +51,31 @@ namespace API.Controllers
 
         }
 
+        [HttpPut]
+        public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
+        {
+
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var user = await _userRepository.GetUserByUsernameAsync(username);
+
+            _mapper.Map(memberUpdateDto, user);
+
+            _userRepository.Update(user);
+
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Faild to update user ");
+
+        }
+
 
         ////users/id
         //[HttpGet("{:id}")]
         //public async Task<ActionResult<AppUser>> GetUserById(int id)
         //{
         //    return await _userRepository.GetUserById(id);
-    
+
         //}
 
     }

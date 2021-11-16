@@ -15,6 +15,8 @@ export interface Member {
   country: string
   photos: Photo[]
   age: number
+
+  lookingFor : string
 }
 
 

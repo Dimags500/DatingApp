@@ -1,3 +1,5 @@
+import { PreventUnsavedGuard } from './_guards/prevent-unsaved.guard';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
@@ -18,6 +20,7 @@ const routes: Routes = [
   children : [
     {path: 'members' , component: MemberListComponent , canActivate: [AuthGuard] } ,
     {path: 'members/:username' , component: MemberDetailComponent} ,
+    {path: 'member/edit' , component: MemberEditComponent , canDeactivate: [PreventUnsavedGuard] } ,
     {path: 'lists' , component: ListsComponent} ,
     {path: 'messages' , component: MessagesComponent}
   ]

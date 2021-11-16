@@ -1,3 +1,4 @@
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { MemberCardComponent } from './members/member-card/member-card.component';
@@ -21,6 +22,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './_modules/shared.module';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 
 
@@ -39,7 +43,8 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
     MemberDetailComponent ,
     ListsComponent ,
     TestErrorsComponent ,
-    MemberCardComponent ,
+    MemberCardComponent,
+    MemberEditComponent ,
 
 
   ],
@@ -52,10 +57,14 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
     NgbModule ,
     BrowserAnimationsModule,
     SharedModule ,
+    NgxSpinnerModule
 
   ],
-  providers: [{provide: HTTP_INTERCEPTORS , useClass: ErrorInterceptor , multi: true  } ,
-    {provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor , multi: true  } ],
+  providers: [
+    {provide: HTTP_INTERCEPTORS , useClass: ErrorInterceptor , multi: true  } ,
+    {provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor , multi: true  } ,
+    {provide: HTTP_INTERCEPTORS , useClass: LoadingInterceptor , multi: true  }
+  ] ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
